@@ -1,10 +1,24 @@
 from django.shortcuts import render
+from .models import * 
+
 
 def home(request):
- return render(request, 'app/home.html')
+ topwear = Product.objects.filter(category ='TW')
+ bottomwear = Product.objects.filter(category ='BW')
+ mobile = Product.objects.filter(category ='M')
+ laptop = Product.objects.filter(category ='L')
+ return render(request, 'app/home.html', {
+  'mobile': mobile,
+  'topwear':topwear,
+  'laptop': laptop,
+  'bottomwear': bottomwear
+ })
 
-def product_detail(request):
- return render(request, 'app/productdetail.html')
+def product_detail(request, id):
+ product = Product.objects.get(id = id)
+ return render(request, 'app/productdetail.html',{
+  'product':product
+ })
 
 def add_to_cart(request):
  return render(request, 'app/addtocart.html')

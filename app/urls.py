@@ -12,7 +12,7 @@ urlpatterns = [
     path('mobile/', views.mobile, name='mobile'),
     path('mobile/<slug:data>', views.mobile, name='mobiledata'),
 
-    path('login/', views.login, name='login'),
-    path('registration/', views.customerregistration, name='customerregistration'),
+    path('login/', views.login_view, name='login'),
+    path('registration/', views.customerregistration, name='register'),
     path('checkout/', views.checkout, name='checkout'),
 ]
